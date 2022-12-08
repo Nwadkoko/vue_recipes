@@ -1,30 +1,48 @@
 <template>
-  <header class="h-12 bg-green flex flex-row justify-around">
-    <h1 class="inline-block text-black"></h1>
-    <nav class="w-full min-h-full">
-      <ul
-        class="pt-2 flex flex-row justify-around text-white text-lg text-center"
-      >
-        <li class="basis-1/12 border-r-2 border-white">
-          <i class="fa-solid fa-utensils text-2xl text-white"></i>
-        </li>
-        <li class="basis-1/3 border-r-2 hover:text-white hover:cursor-pointer">
-          Recettes
-        </li>
-        <li class="basis-1/3 border-r-2 hover:text-white hover:cursor-pointer">
-          Planning
-        </li>
-        <li class="basis-1/3 border-r-2 hover:text-white hover:cursor-pointer">
-          Paramètres
-        </li>
-        <li class="basis-1/3 hover:text-white hover:cursor-pointer">Autres</li>
-      </ul>
+  <header>
+    <nav>
+      <the-header-menu-list :menu-items="menu"></the-header-menu-list>
     </nav>
   </header>
 </template>
 
 <script>
+import TheHeaderMenuList from "./TheHeaderMenuList.vue";
+
 export default {
   name: "the-header",
+  components: {
+    TheHeaderMenuList,
+  },
+  data() {
+    return {
+      menu: [
+        {
+          id: 1,
+          name: "Recettes",
+        },
+        {
+          id: 2,
+          name: "Planning",
+        },
+        {
+          id: 3,
+          name: "Paramètres",
+        },
+      ],
+    };
+  },
 };
 </script>
+
+<style scoped>
+header {
+  @apply h-12 bg-green flex flex-row justify-around mb-4;
+}
+h1 {
+  @apply inline-block text-black;
+}
+nav {
+  @apply w-full min-h-full;
+}
+</style>
