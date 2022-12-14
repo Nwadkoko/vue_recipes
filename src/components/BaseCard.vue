@@ -6,6 +6,6 @@
 
 <style scoped>
 div {
-  @apply w-full shadow-lg;
+  @apply w-full shadow-lg p-2 relative;
 }
 </style>

@@ -5,6 +5,8 @@
       :key="recipe.id"
       :name="recipe.name"
       :difficulty="recipe.difficulty"
+      :steps="recipe.steps"
+      :picture="recipe.picture"
     ></recipes-list-item>
   </ul>
 </template>

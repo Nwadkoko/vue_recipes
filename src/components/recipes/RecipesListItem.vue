@@ -2,7 +2,7 @@
   <li>
     <base-card>
       <h3>{{ name }}</h3>
-      <div>
+      <div class="sm:absolute sm:right-2 sm:inline-block">
         <font-awesome-icon
           icon="fa-solid fa-circle"
           class="text-blue"
@@ -16,6 +16,16 @@
           :key="n"
         />
       </div>
+      <div>
+        <img
+          :src="picture ? picture : 'require(@/assets/pan-ga3e09ee7a_640.jpg)'"
+        />
+      </div>
+      <base-card
+        ><ol>
+          <li v-for="step in steps" :key="step">{{ step }}</li>
+        </ol></base-card
+      >
     </base-card>
   </li>
 </template>
@@ -40,15 +50,20 @@ export default {
         } else return false;
       },
     },
+    picture: {
+      required: false,
+      type: String,
+    },
+    steps: {
+      required: false,
+      type: Array,
+    },
   },
 };
 </script>
 
 <style scoped>
 h3 {
-  @apply inline-block w-2/3;
-}
-div {
-  @apply inline-block;
+  @apply inline-block w-2/5 md:w-3/5 truncate;
 }
 </style>
