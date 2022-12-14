@@ -20,14 +20,17 @@ export default {
         {
           id: 1,
           name: "Recettes",
+          component: "recipes-list",
         },
         {
           id: 2,
           name: "Planning",
+          component: "planning",
         },
         {
           id: 3,
           name: "Paramètres",
+          component: "parameters",
         },
       ],
     };

@@ -31,11 +31,7 @@
 </template>
 
 <script>
-import BaseCard from "../BaseCard.vue";
 export default {
-  components: {
-    BaseCard,
-  },
   props: {
     name: {
       required: true,
