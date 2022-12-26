@@ -1,24 +1,56 @@
 <template>
   <the-header></the-header>
   <main>
-    <recipes-list :recipes="recipes"></recipes-list>
+    <router-view v-if="!loading"></router-view>
+    <loading-circle v-else></loading-circle>
   </main>
 </template>
 
 <script>
 import TheHeader from "./components/TheHeader.vue";
-import RecipesList from "./components/recipes/RecipesList.vue";
+import LoadingCircle from "./components/LoadingCircle.vue";
 
-import recipes from "./assets/recipes.json";
+import { supabase } from "./db/supabase";
+import { computed } from "vue";
+
 export default {
   components: {
     TheHeader,
-    RecipesList,
+    LoadingCircle,
   },
   data() {
     return {
-      recipes: recipes,
+      loading: false,
+      recipes: [],
     };
+  },
+  provide() {
+    return {
+      recipes: computed(() => this.recipes),
+    };
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      try {
+        this.loading = true;
+        let { data, error, status } = await supabase
+          .from("recipes")
+          .select("*");
+
+        if (error && status !== 406) throw error;
+
+        if (data) {
+          this.recipes = data;
+        }
+      } catch (error) {
+        console.error(error.message);
+      } finally {
+        this.loading = false;
+      }
+    },
   },
 };
 </script>

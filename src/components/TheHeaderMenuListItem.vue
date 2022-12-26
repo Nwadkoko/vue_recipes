@@ -1,17 +1,24 @@
 <template>
   <li>
-    {{ name }}
+    <router-link :to="path">{{ name }}</router-link>
   </li>
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
+
 export default {
   props: {
     name: {
       required: true,
       type: String,
     },
+    path: {
+      required: false,
+      type: String,
+    },
   },
+  components: { RouterLink },
 };
 </script>
 

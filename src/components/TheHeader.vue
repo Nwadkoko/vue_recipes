@@ -20,14 +20,17 @@ export default {
         {
           id: 1,
           name: "Recettes",
+          path: "/",
         },
         {
           id: 2,
           name: "Planning",
+          path: "/planning",
         },
         {
           id: 3,
           name: "Paramètres",
+          path: "/params",
         },
       ],
     };

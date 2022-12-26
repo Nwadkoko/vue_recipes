@@ -2,30 +2,40 @@
   <li>
     <base-card>
       <h3>{{ name }}</h3>
-      <div class="sm:absolute sm:right-2 sm:inline-block">
-        <font-awesome-icon
-          icon="fa-solid fa-circle"
-          class="text-blue"
-          v-for="n in difficulty"
-          :key="n"
-        />
-        <font-awesome-icon
-          icon="fa-solid fa-circle"
-          class="text-white"
-          v-for="n in 5 - difficulty"
-          :key="n"
-        />
+      <div>
+        <span>Difficulté</span>
+        <div class="sm:absolute sm:right-8 sm:inline-block">
+          <font-awesome-icon
+            icon="fa-solid fa-circle"
+            class="text-blue"
+            v-for="n in difficulty"
+            :key="n"
+          />
+          <font-awesome-icon
+            icon="fa-solid fa-circle"
+            class="text-white"
+            v-for="n in 5 - difficulty"
+            :key="n"
+          />
+        </div>
       </div>
       <div>
-        <img
-          :src="picture ? picture : 'require(@/assets/pan-ga3e09ee7a_640.jpg)'"
-        />
+        <span>Coût</span>
+        <div class="sm:absolute sm:right-8 sm:inline-block">
+          <font-awesome-icon
+            icon="fa-solid fa-circle"
+            class="text-blue"
+            v-for="n in cost"
+            :key="n"
+          />
+          <font-awesome-icon
+            icon="fa-solid fa-circle"
+            class="text-white"
+            v-for="n in 5 - cost"
+            :key="n"
+          />
+        </div>
       </div>
-      <base-card
-        ><ol>
-          <li v-for="step in steps" :key="step">{{ step }}</li>
-        </ol></base-card
-      >
     </base-card>
   </li>
 </template>
@@ -57,6 +67,15 @@ export default {
     steps: {
       required: false,
       type: Array,
+    },
+    cost: {
+      required: false,
+      type: Number,
+      validator(value) {
+        if (1 <= value <= 5) {
+          return true;
+        } else return false;
+      },
     },
   },
 };

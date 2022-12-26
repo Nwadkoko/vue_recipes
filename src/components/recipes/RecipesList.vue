@@ -5,6 +5,7 @@
       :key="recipe.id"
       :name="recipe.name"
       :difficulty="recipe.difficulty"
+      :cost="recipe.cost"
       :steps="recipe.steps"
       :picture="recipe.picture"
     ></recipes-list-item>
@@ -18,10 +19,9 @@ export default {
   components: {
     RecipesListItem,
   },
-  props: {
+  inject: {
     recipes: {
-      required: true,
-      type: Object,
+      from: "recipes",
     },
   },
 };
@@ -29,6 +29,6 @@ export default {
 
 <style scoped>
 ul {
-  @apply grid grid-cols-3 gap-4 mx-4;
+  @apply grid grid-cols-4 gap-8 mx-12;
 }
 </style>

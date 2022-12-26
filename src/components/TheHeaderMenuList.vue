@@ -4,6 +4,7 @@
       v-for="item in menuItems"
       :key="item.id"
       :name="item.name"
+      :path="item.path"
     ></the-header-menu-list-item>
   </ul>
 </template>
